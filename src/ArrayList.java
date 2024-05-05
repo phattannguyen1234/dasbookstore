@@ -39,6 +39,15 @@ public class ArrayList<E> implements ArrayListGeneric<E> {
 
         return true;
     }
+
+    public boolean replace ( int index, E element ){
+        if ( index < 0 || index >= this.index ) {
+            throw new IndexOutOfBoundsException( "Index out of bound." );
+        }
+        elements[ index ] = element;
+        return true;
+    }
+
     @Override
     public E get( int index ) {
         if ( index < 0 || index >= this.index ) {

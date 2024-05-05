@@ -27,4 +27,13 @@ public class InputMethod {
         System.out.println("You entered: " + value);
         return value;
     }
+
+    public String strAcceptNull(){
+
+    }
+
+    public int intAcceptNull(){
+
+    }
+
 }

@@ -15,6 +15,7 @@ public class Book {
         this.price = price;
     }
 
+
     public int getId() {
         return id;
     }
@@ -65,6 +66,13 @@ public class Book {
 
     @Override
     public String toString(){
-        return "ID: " + id + "\tTitle: " + title + "\t\tCategory: " + category + "\t\tAuthor: " + author + "\t\tQuantity: " + quantity + "\t\tPrice: " + price;
+        return String.format("%-20s%-20s%-20s%-20s%-20s%-20s",
+                "ID: " + id,
+                "Title: " + title,
+                "Category: " + category,
+                "Author: " + author,
+                "Quantity: " + quantity,
+                "Price: " + price);
     }
+
 }
