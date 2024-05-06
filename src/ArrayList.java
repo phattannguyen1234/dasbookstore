@@ -73,7 +73,7 @@ public class ArrayList<E> implements ArrayListGeneric<E> {
 
         E temp = this.elements[ index ];
 
-        for ( int i = index; i < this.index; i++ ) {
+        for ( int i = index; i < this.index - 1; i++ ) {
             this.elements[ i ] = elements[ i + 1 ];
         }
 
@@ -94,7 +94,7 @@ public class ArrayList<E> implements ArrayListGeneric<E> {
     @Override
     public int indexOf( E element ) {
         int result = -1;
-        for ( int i = 0; i < this.index; i++ ) {
+        for ( int i = 0; i < this.index - 1; i++ ) {
             if ( elements[ i ] == element ) {
                 result = i;
                 break;

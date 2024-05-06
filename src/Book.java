@@ -66,13 +66,13 @@ public class Book {
 
     @Override
     public String toString(){
-        return String.format("%-20s%-20s%-20s%-20s%-20s%-20s",
-                "ID: " + id,
-                "Title: " + title,
-                "Category: " + category,
-                "Author: " + author,
-                "Quantity: " + quantity,
-                "Price: " + price);
+        return String.format("%-13s%-25s%-20s%-20s%-18s%-12s",
+                id,
+                title,
+                category,
+                author,
+                quantity,
+                price);
     }
 
 }

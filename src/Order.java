@@ -55,11 +55,17 @@ public class Order {
 
     @Override
     public String toString(){
-        return String.format("%-20s%-20s%-20s%-20s%-20s",
-                "ID: " + id,
-                "Buyer: " + buyer,
-                "Address: " + address,
-                "Total: " + total,
-                "Status: " + status);
+        return String.format("%-13s%-20s%n%-13s%-20s%n%-13s%-20s%n%-13s%-20s%n%-13s%-20s%n%-20s%n",
+                "ORDER ID",
+                id,
+                "BUYER",
+                buyer,
+                "ADDRESS",
+                address,
+                "TOTAL",
+                total + " VND",
+                "STATUS",
+                status,
+                "   ORDER DETAIL");
     }
 }

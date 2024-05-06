@@ -35,12 +35,19 @@ public class Main {
 
         while (running) {
             // MENU
-            System.out.println("[1]  ADD A NEW BOOK");
-            System.out.println("[2]  EDIT A BOOK");
-            System.out.println("[3]  DELETE A BOOK");
-            System.out.println("[4]  SEARCH BOOKS");
-            System.out.println("[5]  VIEW ALL BOOKS SORTED BY ");
-            System.out.println("[10] CLOSE PROGRAM ");
+            System.out.println("   [BOOK STORE MENU]");
+            System.out.println("[1]   ADD A NEW BOOK");
+            System.out.println("[2]   DISPLAY ALL BOOKS");
+            System.out.println("[3]   UPDATE A BOOK BY ID");
+            System.out.println("[4]   DELETE A BOOK BY ID");
+            System.out.println("[5]   DISPLAY BOOK SORTED BY TITLE");
+            System.out.println("[6]   DISPLAY BOOK SORTED BY AUTHOR AND PRICE");
+            System.out.println("[7]   CREATE A NEW ORDER");
+            System.out.println("[8]   DISPLAY ALL ORDERS");
+            System.out.println("[9]   FIND OR CANCEL ORDER BY ID");
+            System.out.println("[10]  DISPLAY AND PROCESS THE PENDING ORDER");
+            System.out.println("[11]  DISPLAY AND PROCESS THE SHIPPING ORDER");
+            System.out.println("[12]  CLOSE PROGRAM ");
             System.out.println("############################################################" );
             System.out.print("ENTER YOUR CHOICE: " );
 
@@ -49,55 +56,70 @@ public class Main {
             switch(choice){
                 case 1:
                     bookMethod.addABook();
+                    System.out.println("############################################################" );
                     break;
                 case 2:
-                    System.out.print("Enter the book's id: " );
+                    bookMethod.displayBooks();
                     System.out.println("############################################################" );
                     break;
                 case 3:
+                    bookMethod.editBookById();
                     System.out.println("############################################################" );
                     break;
                 case 4:
-                    orderMethod.displayOrders();
+                    bookMethod.deleteBookById();
+                    System.out.println("############################################################" );
                     break;
                 case 5:
-                    bookMethod.displayBooks();
+                    bookMethod.sortAndDisplayByTitle();
+                    System.out.println("############################################################" );
                     break;
                 case 6:
-                    bookMethod.sortAndDisplayByTitle();
+                    bookMethod.sortAndDisplayByAuthorAndPrice();
+                    System.out.println("############################################################" );
                     break;
                 case 7:
-                    bookMethod.sortByTitle();
-                    break;
-                case 8:
+                    System.out.println("   [CREATE A NEW ORDER]");
                     do{
-                        System.out.print("SELECT YOUR BOOK --- BOOK ID: ");
+                        System.out.print("SELECT THE BOOK YOU WANT TO BUY BY ID: ");
                         int bookId = inputMethod.getInt();
-                        System.out.print("QUANTITY OF THE BOOK: ");
+                        System.out.print("ENTER THE AMOUNT: ");
                         int quantity = inputMethod.getInt();
                         Book book = bookMethod.findBookByIdToCreateOrder( bookId, quantity);
-                        System.out.println( book );
-
-
-                        System.out.print("ARE YOU SURE TO ADD THIS BOOK TO BUY? [1]YES/ [0]NO: ");
-                        choice = inputMethod.getInt();
-                        if(choice == 1){
-                            orderMethod.addBookToBuy( book, quantity );
+                        if( book != null){
+                            System.out.print("ARE YOU SURE TO ADD THIS BOOK TO BUY? [1]YES/ [0]NO: ");
+                            choice = inputMethod.getInt();
+                            if(choice == 1){
+                                orderMethod.addBookToBuy( book, quantity );
+                            }
                         }
-
                         System.out.print("ADD ANOTHER BOOK? [1]YES/ [0]NO: ");
                         choice = inputMethod.getInt();
                         if(choice == 0){
                             running = false;
                         }
-                    } while(running);
-
+                    } while( running );
                     orderMethod.createOrder();
+                    System.out.println("############################################################" );
+                    running = true;
+                    break;
+                case 8:
+                    orderMethod.displayOrders();
+                    System.out.println("############################################################" );
                     break;
                 case 9:
-                    bookMethod.sortByAuthorAndPrice();
+                    orderMethod.findOrCancelOrderById();
+                    System.out.println("############################################################" );
                     break;
                 case 10:
+                    orderMethod.shipTheOrder();
+                    System.out.println("############################################################" );
+                    break;
+                case 11:
+                    orderMethod.doneTheOrder();
+                    System.out.println("############################################################" );
+                    break;
+                case 12:
                     running = false;
                     break;
             }

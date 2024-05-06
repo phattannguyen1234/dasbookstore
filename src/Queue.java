@@ -76,7 +76,4 @@ public class Queue<E> implements QueueGeneric<E> {
         result.append( "]" );
         return result.toString( );
     }
-
-
-
 }

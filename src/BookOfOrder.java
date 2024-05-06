@@ -45,9 +45,9 @@ public class BookOfOrder {
 
     @Override
     public String toString(){
-        return String.format("%-20s%-20s%-20s",
-                "ID: " + title,
-                "Buyer: " + quantity,
-                "Address: " + price);
+        return String.format("%-25s%-18s%-12s",
+                title,
+                quantity,
+                price);
     }
 }

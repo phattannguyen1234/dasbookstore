@@ -17,7 +17,7 @@ public class BookMethod {
     }
 
     public void addABook(){
-        System.out.println("[ADD A NEW BOOK]" );
+        System.out.println("   [ADD A NEW BOOK]" );
         System.out.print("Enter the book's title: " );
         String title = sc.nextLine();
         System.out.print("Enter the book's category: " );
@@ -32,24 +32,26 @@ public class BookMethod {
         books.add( book );
         bookId++;
         System.out.println( "The book added successfully!" );
-        System.out.println("############################################################" );
     }
 
     public void displayBooks(){
-        System.out.println("Book list:" );
+        System.out.println("   [DISPLAY ALL BOOKS]" );
+        System.out.printf("%-13s%-25s%-20s%-20s%-18s%-16s%n", "[BOOK ID]", "[BOOK TITLE]", "[CATEGORY]", "[AUTHOR]", "[QUANTITY]", "[PRICE] (VND)");
         for(int i = 0; i < books.size() ; i++){
             System.out.println( books.get(i) );
         }
     }
 
-    public void findBookByIdToEdit(){
-        System.out.println("[EDIT A BOOK SEARCH BY ID]" );
-        System.out.print("ENTER THE BOOK ID: " );
+    public void editBookById(){
+        System.out.println( "   [EDIT A BOOK SEARCH BY ID]" );
+        System.out.print( "ENTER THE BOOK ID: " );
         int id = inputMethod.getInt();
         int check = 0;
-        for(int i = 0; i < books.size() ; i++){
+        int i;
+        for(i = 0; i < books.size() ; i++){
             if(books.get(i).getId() == id){
-                System.out.println("HERE IS THE BOOK YOU WANT TO EDIT" );
+                System.out.println( "HERE IS THE BOOK YOU WANT TO EDIT" );
+                System.out.printf("%-13s%-25s%-20s%-20s%-18s%-16s%n", "[BOOK ID]", "[BOOK TITLE]", "[CATEGORY]", "[AUTHOR]", "[QUANTITY]", "[PRICE] (VND)");
                 System.out.println( books.get(i) );
                 check = 1;
                 break;
@@ -57,8 +59,61 @@ public class BookMethod {
         }
         if( check == 0 ){
             System.out.println( "CAN NOT FIND THE BOOK" );
-        }
+        } else {
+            String strValue;
+            Integer intValue;
+            System.out.println( "[NOTICE] *** INPUT NOTHING, NOTHING BE CHANGED" );
+            System.out.print( "ENTER NEW TITLE: " );
+            strValue = inputMethod.strAcceptNull();
+            if( strValue != null ){
+                books.get( i ).setTitle( strValue );
+            }
 
+            System.out.print( "ENTER NEW AUTHOR:" );
+            strValue = inputMethod.strAcceptNull();
+            if( strValue != null ){
+                books.get( i ).setAuthor( strValue );
+            }
+
+            System.out.print( "ENTER NEW QUANTITY:" );
+            intValue = inputMethod.intAcceptNull();
+            if( intValue != null ){
+                books.get( i ).setQuantity( intValue );
+            }
+
+            System.out.print( "ENTER NEW PRICE:" );
+            intValue = inputMethod.intAcceptNull();
+            if( intValue != null ){
+                books.get( i ).setPrice( intValue );
+            }
+        }
+    }
+
+    public void deleteBookById(){
+        System.out.println( "   [DELETE A BOOK SEARCH BY ID]" );
+        System.out.print( "ENTER THE BOOK ID: " );
+        int id = inputMethod.getInt();
+        int check = 0;
+        int i;
+        for(i = 0; i < books.size() ; i++){
+            if(books.get(i).getId() == id){
+                System.out.println( "HERE IS THE BOOK YOU WANT TO DELETE" );
+                System.out.printf("%-13s%-25s%-20s%-20s%-18s%-16s%n", "[BOOK ID]", "[BOOK TITLE]", "[CATEGORY]", "[AUTHOR]", "[QUANTITY]", "[PRICE] (VND)");
+                System.out.println( books.get(i) );
+                check = 1;
+                break;
+            }
+        }
+        if( check == 0 ) {
+            System.out.println("CAN NOT FIND THE BOOK");
+        }else {
+            System.out.print( "ARE YOU SURE TO DELETE? [1]YES/ [0]NO: " );
+            int choice = inputMethod.getInt();
+            if( choice == 1 ){
+                books.remove( i );
+                System.out.println( "DELETED SUCCESSFULLY" );
+            }
+        }
     }
 
     public Book findBookByIdToCreateOrder(int id, int quantity){
@@ -67,18 +122,18 @@ public class BookMethod {
         for(i = 0; i < books.size(); i++){
             if(books.get(i).getId() == id){
                 System.out.println("HERE IS THE BOOK YOU WANT TO BUY" );
+                System.out.printf("%-13s%-25s%-20s%-20s%-18s%-16s%n", "[BOOK ID]", "[BOOK TITLE]", "[CATEGORY]", "[AUTHOR]", "[QUANTITY]", "[PRICE] (VND)");
                 System.out.println( books.get(i) );
                 check = 1;
                 break;
             }
         }
         if(check == 0){
-            System.out.println( "CAN NOT FIND THE BOOK" );
+            System.out.println( "[NOTICE] *** CAN NOT FIND THE BOOK" );
             return null;
         }
-
         if( books.get( i ).getQuantity() < quantity ){
-            System.out.println( "CAN NOT ADD THIS BOOK TO BUY, THERE'S ONLY " + books.get( i ).getQuantity() + " BOOK" );
+            System.out.println( "CAN NOT ADD THIS BOOK TO BUY, THERE'S ONLY " + books.get( i ).getQuantity() + " BOOK IN THE STORE" );
             return null;
         } else{
             books.get( i ).setQuantity( books.get( i ).getQuantity() - quantity );
@@ -103,7 +158,7 @@ public class BookMethod {
 //
 //    }
 
-    public void editBookById(){
+    public void editBookBy(){
         System.out.println("[EDIT A BOOK SEARCH BY ID]" );
         System.out.print("ENTER THE BOOK ID: " );
         int id = inputMethod.getInt();
@@ -147,6 +202,7 @@ public class BookMethod {
     } // TRASH
 
     public void sortAndDisplayByTitle(){
+        System.out.println("   [SORT AND DISPLAY BOOK BY TITLE]");
         for( int i = 0; i < books.size(); i++ ){
             int indexAtMinValue = i;
             for( int j = i + 1; j < books.size(); j++ ){
@@ -205,6 +261,7 @@ public class BookMethod {
 //    } // TRASH
 
     public void sortAndDisplayByAuthorAndPrice(){
+        System.out.println("   [SORT AND DISPLAY BOOK BY AUTHOR AND PRICE]");
         for(int i = 0; i < books.size(); i++){
             int indexAtMinValue = i;
             for(int j = i + 1; j < books.size(); j++){
@@ -216,7 +273,6 @@ public class BookMethod {
             books.replace( indexAtMinValue, books.get( i ) );
             books.replace( i, temp );
         }
-
         for(int i = 0; i < books.size(); i++){
             int indexAtMinValue = i;
             for(int j = i + 1; j <books.size(); j++){
@@ -231,6 +287,7 @@ public class BookMethod {
             books.replace( indexAtMinValue, books.get( i ) );
             books.replace( i, temp );
         }
+        displayBooks();
     }
 
     public int compareString(String a, String b){

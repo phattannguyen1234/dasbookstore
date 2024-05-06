@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class InputMethod {
     Scanner sc = new Scanner(System.in);
-    int value = 0;
+    int value;
     boolean validInput = false;
 
     public int getInt() {
@@ -29,11 +29,35 @@ public class InputMethod {
     }
 
     public String strAcceptNull(){
+        String input = null;
 
+        try {
+            input = sc.nextLine();
+
+            if (input.isEmpty()) {
+                input = null; // Assign null if user inputs nothing
+            }
+        } catch (Exception e) {
+            System.err.println("An error occurred: " + e.getMessage());
+            System.out.print("PLEASE RE-INPUT: ");
+        }
+        return input;
     }
 
-    public int intAcceptNull(){
-
+    public Integer intAcceptNull(){
+        while (true) {
+            try {
+                String input = sc.nextLine();
+                if (!input.trim().isEmpty()) {
+                    return Integer.parseInt(input);
+                } else {
+                    return null;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+                System.out.print("RE-ENTER YOUR CHOICE: ");
+            }
+        }
     }
 
 }
