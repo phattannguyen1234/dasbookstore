@@ -20,7 +20,7 @@ public class ArrayList<E> implements ArrayListGeneric<E> {
     }
     @Override
     public boolean add( int index, E element ) {
-        if ( index < 0 || index >= this.index ) {
+        if ( index < 0 || index > this.index - 1 ) {
             throw new IndexOutOfBoundsException( "Index out of bound." );
         }
 
@@ -41,7 +41,7 @@ public class ArrayList<E> implements ArrayListGeneric<E> {
     }
 
     public boolean replace ( int index, E element ){
-        if ( index < 0 || index >= this.index ) {
+        if ( index < 0 || index > this.index - 1 ) {
             throw new IndexOutOfBoundsException( "Index out of bound." );
         }
         elements[ index ] = element;
@@ -50,14 +50,14 @@ public class ArrayList<E> implements ArrayListGeneric<E> {
 
     @Override
     public E get( int index ) {
-        if ( index < 0 || index >= this.index ) {
+        if ( index < 0 || index > this.index - 1 ) {
             throw new IndexOutOfBoundsException( "Index out of bound." );
         }
         return this.elements[ index ];
     }
     @Override
     public E set( int index, E element ) {
-        if ( index < 0 || index >= this.index ) {
+        if ( index < 0 || index > this.index - 1 ) {
             throw new IndexOutOfBoundsException( "Index out of bound." );
         }
 
@@ -67,7 +67,7 @@ public class ArrayList<E> implements ArrayListGeneric<E> {
     }
     @Override
     public E remove( int index ) {
-        if ( index < 0 || index >= this.index ) {
+        if ( index < 0 || index > this.index - 1 ) {
             throw new IndexOutOfBoundsException( "Index out of bound." );
         }
 
@@ -89,7 +89,7 @@ public class ArrayList<E> implements ArrayListGeneric<E> {
     }
     @Override
     public int size( ) {
-        return this.index;
+        return this.index - 1;
     }
     @Override
     public int indexOf( E element ) {
@@ -105,7 +105,7 @@ public class ArrayList<E> implements ArrayListGeneric<E> {
     @Override
     public boolean contains( E element ) {
         boolean result = false;
-        for ( int i = 0; i < this.index; i++ ) {
+        for ( int i = 0; i <= this.index - 1; i++ ) {
             if ( elements[ i ] == element ) {
                 result = true;
                 break;

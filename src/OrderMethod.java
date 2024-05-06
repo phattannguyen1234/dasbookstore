@@ -33,7 +33,7 @@ public class OrderMethod {
     public void createOrder(){
         int check = 0;
         int total = 0;
-        for(int i = 0; i < booksOfOrder.size(); i++){
+        for(int i = 0; i <= booksOfOrder.size(); i++){
             if( booksOfOrder.get( i ).getOrderId() == orderId ){
                 check = 1;
                 break;
@@ -44,7 +44,7 @@ public class OrderMethod {
             String name = sc.nextLine();
             System.out.print("ENTER YOUR DELIVERY ADDRESS: ");
             String address = sc.nextLine();
-            for(int i = 0; i < booksOfOrder.size(); i++ ){
+            for(int i = 0; i <= booksOfOrder.size(); i++ ){
                 if( booksOfOrder.get(i).getOrderId() == orderId ){
                     total += ( booksOfOrder.get(i).getPrice() * booksOfOrder.get(i).getQuantity() );
                 }
@@ -78,7 +78,7 @@ public class OrderMethod {
             temp = orders.poll();
             System.out.println( temp );
             System.out.printf("%-25s%-18s%-16s%n", "[BOOK TITLE]", "[QUANTITY]", "[PRICE] (VND)");
-            for( int j = 0; j < booksOfOrder.size(); j++ ){
+            for( int j = 0; j <= booksOfOrder.size(); j++ ){
                 if( booksOfOrder.get( j ).orderId == temp.getId() ){
                     System.out.println( booksOfOrder.get( j ) );
                 }
@@ -90,7 +90,7 @@ public class OrderMethod {
             temp = shippingOrders.poll();
             System.out.println( temp );
             System.out.printf("%-25s%-18s%-16s%n", "[BOOK TITLE]", "[QUANTITY]", "[PRICE] (VND)");
-            for( int j = 0; j < booksOfOrder.size(); j++ ){
+            for( int j = 0; j <= booksOfOrder.size(); j++ ){
                 if( booksOfOrder.get( j ).orderId == temp.getId() ){
                     System.out.println( booksOfOrder.get( j ) );
                 }
@@ -102,7 +102,7 @@ public class OrderMethod {
             temp = doneOrders.poll();
             System.out.println( temp );
             System.out.printf("%-25s%-18s%-16s%n", "[BOOK TITLE]", "[QUANTITY]", "[PRICE] (VND)");
-            for( int j = 0; j < booksOfOrder.size(); j++ ){
+            for( int j = 0; j <= booksOfOrder.size(); j++ ){
                 if( booksOfOrder.get( j ).orderId == temp.getId() ){
                     System.out.println( booksOfOrder.get( j ) );
                 }
@@ -114,7 +114,7 @@ public class OrderMethod {
             temp = cancelOrders.poll();
             System.out.println( temp );
             System.out.printf("%-25s%-18s%-16s%n", "[BOOK TITLE]", "[QUANTITY]", "[PRICE] (VND)");
-            for( int j = 0; j < booksOfOrder.size(); j++ ){
+            for( int j = 0; j <= booksOfOrder.size(); j++ ){
                 if( booksOfOrder.get( j ).orderId == temp.getId() ){
                     System.out.println( booksOfOrder.get( j ) );
                 }
@@ -140,7 +140,7 @@ public class OrderMethod {
                 System.out.println( "HERE IS THE ORDER WITH ID: " + id );
                 System.out.println( temp );
                 System.out.printf("%-25s%-18s%-16s%n", "[BOOK TITLE]", "[QUANTITY]", "[PRICE] (VND)");
-                for( int j = 0; j < booksOfOrder.size(); j++ ){
+                for( int j = 0; j <= booksOfOrder.size(); j++ ){
                     if( booksOfOrder.get( j ).orderId == temp.getId() ){
                         System.out.println( booksOfOrder.get( j ) );
                     }
@@ -168,7 +168,7 @@ public class OrderMethod {
                     System.out.println( "[HERE IS THE ORDER WITH ID ]" + id );
                     System.out.println(temp);
                     System.out.printf("%-25s%-18s%-16s%n", "[BOOK TITLE]", "[QUANTITY]", "[PRICE] (VND)");
-                    for (int j = 0; j < booksOfOrder.size(); j++) {
+                    for (int j = 0; j <= booksOfOrder.size(); j++) {
                         if (booksOfOrder.get(j).orderId == temp.getId()) {
                             System.out.println(booksOfOrder.get(j));
                         }
@@ -190,7 +190,7 @@ public class OrderMethod {
                     System.out.println( "[HERE IS THE ORDER WITH ID ]" + id );
                     System.out.println( temp );
                     System.out.printf("%-25s%-18s%-16s%n", "[BOOK TITLE]", "[QUANTITY]", "[PRICE] (VND)");
-                    for( int j = 0; j < booksOfOrder.size(); j++ ){
+                    for( int j = 0; j <= booksOfOrder.size(); j++ ){
                         if( booksOfOrder.get( j ).orderId == temp.getId() ){
                             System.out.println( booksOfOrder.get( j ) );
                         }
@@ -219,7 +219,7 @@ public class OrderMethod {
                 System.out.println( orders.peek() );
 
                 System.out.printf("%-25s%-18s%-16s%n", "[BOOK TITLE]", "[QUANTITY]", "[PRICE] (VND)");
-                for( int j = 0; j < booksOfOrder.size(); j++ ){
+                for( int j = 0; j <= booksOfOrder.size(); j++ ){
                     if( booksOfOrder.get( j ).orderId == orders.peek().getId() ){
                         System.out.println( booksOfOrder.get( j ) );
                     }
@@ -253,7 +253,7 @@ public class OrderMethod {
                 System.out.println( shippingOrders.peek() );
 
                 System.out.printf("%-25s%-18s%-16s%n", "[BOOK TITLE]", "[QUANTITY]", "[PRICE] (VND)");
-                for( int j = 0; j < booksOfOrder.size(); j++ ){
+                for( int j = 0; j <= booksOfOrder.size(); j++ ){
                     if( booksOfOrder.get( j ).orderId == shippingOrders.peek().getId() ){
                         System.out.println( booksOfOrder.get( j ) );
                     }

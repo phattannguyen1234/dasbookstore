@@ -37,7 +37,7 @@ public class BookMethod {
     public void displayBooks(){
         System.out.println("   [DISPLAY ALL BOOKS]" );
         System.out.printf("%-13s%-25s%-20s%-20s%-18s%-16s%n", "[BOOK ID]", "[BOOK TITLE]", "[CATEGORY]", "[AUTHOR]", "[QUANTITY]", "[PRICE] (VND)");
-        for(int i = 0; i < books.size() ; i++){
+        for(int i = 0; i <= books.size() ; i++){
             System.out.println( books.get(i) );
         }
     }
@@ -48,7 +48,7 @@ public class BookMethod {
         int id = inputMethod.getInt();
         int check = 0;
         int i;
-        for(i = 0; i < books.size() ; i++){
+        for(i = 0; i <= books.size() ; i++){
             if(books.get(i).getId() == id){
                 System.out.println( "HERE IS THE BOOK YOU WANT TO EDIT" );
                 System.out.printf("%-13s%-25s%-20s%-20s%-18s%-16s%n", "[BOOK ID]", "[BOOK TITLE]", "[CATEGORY]", "[AUTHOR]", "[QUANTITY]", "[PRICE] (VND)");
@@ -95,7 +95,7 @@ public class BookMethod {
         int id = inputMethod.getInt();
         int check = 0;
         int i;
-        for(i = 0; i < books.size() ; i++){
+        for(i = 0; i <= books.size() ; i++){
             if(books.get(i).getId() == id){
                 System.out.println( "HERE IS THE BOOK YOU WANT TO DELETE" );
                 System.out.printf("%-13s%-25s%-20s%-20s%-18s%-16s%n", "[BOOK ID]", "[BOOK TITLE]", "[CATEGORY]", "[AUTHOR]", "[QUANTITY]", "[PRICE] (VND)");
@@ -119,7 +119,7 @@ public class BookMethod {
     public Book findBookByIdToCreateOrder(int id, int quantity){
         int i = 0;
         int check = 0;
-        for(i = 0; i < books.size(); i++){
+        for(i = 0; i <= books.size(); i++){
             if(books.get(i).getId() == id){
                 System.out.println("HERE IS THE BOOK YOU WANT TO BUY" );
                 System.out.printf("%-13s%-25s%-20s%-20s%-18s%-16s%n", "[BOOK ID]", "[BOOK TITLE]", "[CATEGORY]", "[AUTHOR]", "[QUANTITY]", "[PRICE] (VND)");
@@ -162,7 +162,7 @@ public class BookMethod {
         System.out.println("[EDIT A BOOK SEARCH BY ID]" );
         System.out.print("ENTER THE BOOK ID: " );
         int id = inputMethod.getInt();
-        for(int i = 0; i < books.size() ; i++){
+        for(int i = 0; i <= books.size() ; i++){
             if(books.get(i).getId() == id){
                 System.out.println("HERE IS THE BOOK YOU WANT TO EDIT" );
                 System.out.println( books.get(i) );
@@ -203,9 +203,9 @@ public class BookMethod {
 
     public void sortAndDisplayByTitle(){
         System.out.println("   [SORT AND DISPLAY BOOK BY TITLE]");
-        for( int i = 0; i < books.size(); i++ ){
+        for( int i = 0; i <= books.size(); i++ ){
             int indexAtMinValue = i;
-            for( int j = i + 1; j < books.size(); j++ ){
+            for( int j = i + 1; j <= books.size(); j++ ){
                 if( compareString( books.get( j ).getTitle(), books.get( indexAtMinValue ).getTitle() ) == 1 ){
                     indexAtMinValue = j;
                 }
@@ -262,9 +262,9 @@ public class BookMethod {
 
     public void sortAndDisplayByAuthorAndPrice(){
         System.out.println("   [SORT AND DISPLAY BOOK BY AUTHOR AND PRICE]");
-        for(int i = 0; i < books.size(); i++){
+        for(int i = 0; i <= books.size(); i++){
             int indexAtMinValue = i;
-            for(int j = i + 1; j < books.size(); j++){
+            for(int j = i + 1; j <= books.size(); j++){
                 if(compareString(books.get( j ).getAuthor(), books.get( indexAtMinValue ).getAuthor()) == 1){
                     indexAtMinValue = j;
                 }
@@ -273,9 +273,9 @@ public class BookMethod {
             books.replace( indexAtMinValue, books.get( i ) );
             books.replace( i, temp );
         }
-        for(int i = 0; i < books.size(); i++){
+        for(int i = 0; i <= books.size(); i++){
             int indexAtMinValue = i;
-            for(int j = i + 1; j <books.size(); j++){
+            for(int j = i + 1; j <= books.size(); j++){
                 if((compareString(books.get( j ).getAuthor(), books.get( indexAtMinValue ).getAuthor()) == 0) &&
                         (books.get(j).getPrice() < books.get( indexAtMinValue ).getPrice())){
                     indexAtMinValue = j;
